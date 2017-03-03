@@ -28,12 +28,18 @@ namespace IPSharpNS
 {
     public class GlobalVars
     {
-        public static string Version = "1.0";
+        public static string Version = "1.1";
     }
 
     class Program
     {
-        static void DisplayIP(string SelectedIP)
+        static void DisplayInternalIP()
+        {
+            IPLocal ip = new IPLocal();
+            ip.DisplayResults();
+        }
+
+        static void DisplayExternalIP(string SelectedIP)
         {
             IPSharp ipsharp = new IPSharp(SelectedIP);
             ipsharp.DisplayResults();
@@ -51,7 +57,8 @@ namespace IPSharpNS
             Console.WriteLine("[Opções]");
             Console.WriteLine("--------");
             Console.WriteLine(" -h || --help\t\tMostra este menu de ajuda.");
-            Console.WriteLine(" -i || --ip\t\tMostra as informações do endereço IP selecionado.\n");
+            Console.WriteLine(" -i || --ip\t\tMostra as informações do endereço IP selecionado.");
+            Console.WriteLine(" -l || --local\t\tMostra as informações das interfaces de rede da máquina.\n");
 
             Console.WriteLine("Nota:");
             Console.WriteLine("-----\n");
@@ -61,6 +68,9 @@ namespace IPSharpNS
             Console.WriteLine("Porém, há um limite diário de 1000 verificações para o IPInfo, caso exceda este limite, você");
             Console.WriteLine("poderá ficar sem a informação sobre os endereços que você escolher! Caso isto ocorra, deverá");
             Console.WriteLine("esperar um período de 24 horas até a próxima consulta!\n");
+
+            Console.WriteLine("Para verificações das interfaces de rede locais da máquina, o programa não faz uso de nenhuma");
+            Console.WriteLine("API, portanto não requer conexão com a internet ou possui qualquer limite de verificação!\n");
 
             Console.WriteLine("----------------------------------------------------------------------------------\n");
 
@@ -75,10 +85,13 @@ namespace IPSharpNS
         {
             if (args.Length >= 2) {
                 if (args[0].Contains("-i") || args[0].Contains("--ip")) {
-                    DisplayIP(string.Format("{0}", args[1]));
+                    DisplayExternalIP(string.Format("{0}", args[1]));
                 }
                 if (args[0].Contains("-h") || args[0].Contains("--help")) {
                     HelpMenu();
+                }
+                if (args[0].Contains("-l") || args[0].Contains("--local")) {
+                    DisplayInternalIP();
                 }
             }
             else if (args.Length == 1) {
@@ -89,9 +102,13 @@ namespace IPSharpNS
                 if (args[0].Contains("-h") || args[0].Contains("--help")) {
                     HelpMenu();
                 }
+                if (args[0].Contains("-l") || args[0].Contains("--local"))
+                {
+                    DisplayInternalIP();
+                }
             }
             else {
-                DisplayIP(null);
+                DisplayExternalIP(null);
             }
         }
     }

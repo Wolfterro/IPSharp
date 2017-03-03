@@ -25,6 +25,7 @@ SOFTWARE.
 using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -80,6 +81,11 @@ namespace IPSharpNS
         // -------------------------------
         public void DisplayResults()
         {
+            string Announcer = string.Format("Informações sobre o IP '{0}':", IP);
+
+            Console.WriteLine(Announcer);
+            Console.WriteLine(string.Concat(Enumerable.Repeat("-", Announcer.Length)));
+
             Console.WriteLine("Endereço IP: {0}", IP);
             Console.WriteLine("Hostname: {0}", Hostname);
             Console.WriteLine("Cidade: {0}", City);
@@ -180,7 +186,6 @@ namespace IPSharpNS
                 }
                 catch (Exception) {
                     GoogleGeoLoc = "Indisponível";
-                    throw;
                 }
             }
             else {

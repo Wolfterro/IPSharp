@@ -1,0 +1,19 @@
+IPSharp
+=======
+
+Obtenha detalhes sobre seu endereço IP utilizando as API's da IPInfo e Google Maps!
+-----------------------------------------------------------------------------------
+
+CHANGELOG:
+==========
+
+VERSÃO 1.1:
+- Adicionado modo local:
+--- O modo local irá mostrar algumas informações sobre as interfaces de rede local da máquina.
+
+#---------------------------------------------------------------------------------------------------------------
+
+VERSÃO 1.0:
+- Versão inicial do programa.
+
+#---------------------------------------------------------------------------------------------------------------
