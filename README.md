@@ -14,6 +14,8 @@
 
 ##### Para verificações em modo local, o programa não faz uso de nenhuma API, portanto não requer conexão com a internet ou possui qualquer limite de verificação!
 
+### [Verifique o CHANGELOG para maiores informações sobre novas versões!](https://raw.github.com/Wolfterro/IPSharp/master/CHANGELOG.txt)
+
 ### Uso:
 ##### Aqui estão os possíveis argumentos que poderão ser inseridos na hora de executar o programa:
 
